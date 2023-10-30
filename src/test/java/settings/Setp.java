@@ -10,11 +10,11 @@ public class Setp {
     private static void setLocalDriver() {
         pageLoadTimeout = 100000000;
         browser = "chrome";
-        browserSize = "900x600";
+        browserSize = "800x600";
         headless = false;
 //        proxyEnabled = true;
 //        fileDownload = PROXY;
-        downloadsFolder = "src/test/resources/singFile";
+        downloadsFolder = "src/test/resources";
         var options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
