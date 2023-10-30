@@ -1,25 +1,23 @@
 package test;
 
+import Results.ResultFormPage;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import settings.Setp;
-import org.openqa.selenium.support.ui.Select;
-
 import java.io.File;
-
 import static com.codeborne.selenide.Selenide.$;
+
+
 
 public class Test extends Setp {
     Data data = new Data();
-    private final Calendar calendar = new Calendar("Привет",$(".react-datepicker__day.react-datepicker__day--019"),
-            $(By.xpath("//div[@class='react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--select']//select[1]")),
+    ResultFormPage resultFormPage = new ResultFormPage();
+    private final Calendar calendar = new Calendar("Привет",
+            $(".react-datepicker__month-select"),
             $(".react-datepicker__year-select"),
+            $(".react-datepicker__day.react-datepicker__day--019"),
             $("#dateOfBirthInput"));
-//    Calendar calendar = new Calendar ("Practice Form",
-//            $(".react-datepicker__day.react-datepicker__day--019"),
-//            $(By.xpath("//div[@class='react-datepickermonth-dropdown-container react-datepickermonth-dropdown-container--select']//select[1]")),
-//            $(".react-datepicker__year-select"),
-//            $("#dateOfBirthInput"));
+
 @org.junit.jupiter.api.Test
     void openGoogle () {
     Selenide.open("https://demoqa.com/automation-practice-form");
@@ -39,13 +37,22 @@ public class Test extends Setp {
     $("#react-select-4-input").setValue("Agra").pressEnter();
     //$("#close-fixedban").click();
     $("#submit").click();
-    Selenide.sleep(2000);
-    $("#closeLargeModal").click();
+    Selenide.sleep(5000);
 
-       Selenide.sleep(5000);
-
-
-
+    resultFormPage.checkVisible()
+            .checkResult("Student Name", "Yuliya" + " " + "Shashkova"
+                    , "имя и фамилию")
+            .checkResult("Student Email", "julia.rine55@mail.ru", "почту")
+            .checkResult("Gender", "Female", "пол")
+            .checkResult("Mobile", "9506149598", "номер телефона")
+            .checkResult("Date of Birth", "19" + " " + "October" + ","
+                    + "1994", "дату рождения")
+            .checkResult("Subjects", "Physics", "предмет")
+            .checkResult("Hobbies", "Sports", "хобби")
+            .checkResult("Picture", "textFile.txt", "загруженный файл")
+            .checkResult("Address", "1 Apple Park Way. Cupertino, CA", "адрес")
+            .checkResult("State and City", "Uttar Pradesh" + " " + "Agra",
+                    "штат и город");
 }
 
 }

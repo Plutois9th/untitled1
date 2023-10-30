@@ -27,7 +27,7 @@ public class Calendar {
 
         selectorYear.selectOption(year);
 
-        selectorDay.selectOption(day);
+        //selectorDay.selectOption(day);
         selectorDay.click();
     }
 
