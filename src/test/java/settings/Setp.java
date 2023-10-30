@@ -6,11 +6,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class settings {
+public class Setp {
     private static void setLocalDriver() {
         pageLoadTimeout = 100000000;
         browser = "chrome";
-        browserSize = "1920x1080";
+        browserSize = "900x600";
         headless = false;
 //        proxyEnabled = true;
 //        fileDownload = PROXY;
